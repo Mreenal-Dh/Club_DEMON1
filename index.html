@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - DSPM IIIT Naya Raipur</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Geometric Background Shapes -->
+    <div class="geometric-bg">
+        <div class="shape shape-circle-1"></div>
+        <div class="shape shape-square-1"></div>
+        <div class="shape shape-triangle-1"></div>
+        <div class="shape shape-circle-2"></div>
+        <div class="shape shape-line-1"></div>
+        <div class="shape shape-line-2"></div>
+    </div>
+    
+    <div class="login-container">
+        <div class="login-box">
+            <div class="college-logo">
+                <img src="assets/images/logo.png" alt="IIIT Naya Raipur Logo" class="logo-img">
+                <h1>DSPM IIIT</h1>
+                <p class="college-subtitle">Naya Raipur</p>
+            </div>
+            
+            <h2>Admin Login</h2>
+            <p class="college-full-name">Dr. Shyama Prasad Mukherjee International Institute of Information Technology, Naya Raipur</p>
+            
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required placeholder="Enter admin username">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter password">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Login as Admin</button>
+            </form>
+            
+            <div class="divider">
+                <span>OR</span>
+            </div>
+            
+            <button onclick="window.location.href='home.html'" class="btn btn-secondary">
+                I am a Student
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

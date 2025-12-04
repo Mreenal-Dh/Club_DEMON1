@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - DSPM IIIT Naya Raipur</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Geometric Background Shapes -->
+    <div class="geometric-bg">
+        <div class="shape shape-circle-1"></div>
+        <div class="shape shape-square-1"></div>
+        <div class="shape shape-triangle-1"></div>
+        <div class="shape shape-line-1"></div>
+    </div>
+    
+    <div class="page-container">
+        <header class="admin-header">
+            <div class="logo-section">
+                <img src="assets/images/logo.png" alt="IIIT Naya Raipur Logo" class="logo-img">
+                <div class="college-name">
+                    <span>Admin Dashboard</span>
+                </div>
+            </div>
+            <nav class="admin-nav">
+                <button class="nav-btn active" data-section="clubs">Clubs</button>
+                <button class="nav-btn" data-section="events">Events</button>
+                <button class="nav-btn" data-section="applications">Applications</button>
+                <button class="logout-btn" id="logoutBtn">Logout</button>
+            </nav>
+        </header>
+        
+        <main class="admin-content">
+            <!-- Clubs Section -->
+            <section id="clubs-section" class="admin-section active">
+                <div class="section-header">
+                    <h2>Manage Clubs</h2>
+                    <button class="btn-primary" id="addClubBtn">+ Add New Club</button>
+                </div>
+                
+                <div class="clubs-list" id="clubsList">
+                    <div class="loading">Loading clubs...</div>
+                </div>
+            </section>
+            
+            <!-- Events Section -->
+            <section id="events-section" class="admin-section">
+                <div class="section-header">
+                    <h2>Manage Events</h2>
+                    <button class="btn-primary" id="addEventBtn">+ Add New Event</button>
+                </div>
+                
+                <div class="events-list" id="eventsList">
+                    <div class="loading">Loading events...</div>
+                </div>
+            </section>
+            
+            <!-- Applications Section -->
+            <section id="applications-section" class="admin-section">
+                <div class="section-header">
+                    <h2>Club Applications</h2>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-status="all">All</button>
+                        <button class="filter-btn" data-status="pending">Pending</button>
+                        <button class="filter-btn" data-status="approved">Approved</button>
+                        <button class="filter-btn" data-status="rejected">Rejected</button>
+                    </div>
+                </div>
+                
+                <div class="applications-list" id="applicationsList">
+                    <div class="loading">Loading applications...</div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Add/Edit Club Modal -->
+    <div class="modal" id="clubModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="clubModalTitle">Add New Club</h3>
+                <button class="modal-close" id="closeClubModal">&times;</button>
+            </div>
+            <form id="clubForm">
+                <input type="hidden" id="clubId">
+                <div class="form-group">
+                    <label for="clubName">Club Name</label>
+                    <input type="text" id="clubName" required>
+                </div>
+                <div class="form-group">
+                    <label for="clubDescription">Short Description</label>
+                    <textarea id="clubDescription" rows="2" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="clubLongDescription">Full Description</label>
+                    <textarea id="clubLongDescription" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="clubMembers">Member Count</label>
+                    <input type="number" id="clubMembers" value="0" required>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="clubRecruiting" checked>
+                        Currently Recruiting
+                    </label>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" id="cancelClubBtn">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Club</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add/Edit Event Modal -->
+    <div class="modal" id="eventModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="eventModalTitle">Add New Event</h3>
+                <button class="modal-close" id="closeEventModal">&times;</button>
+            </div>
+            <form id="eventForm">
+                <input type="hidden" id="eventId">
+                <div class="form-group">
+                    <label for="eventTitle">Event Title</label>
+                    <input type="text" id="eventTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventDate">Display Date</label>
+                    <input type="text" id="eventDate" placeholder="Dec 15-17, 2025" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventDateTime">Full Date & Time</label>
+                    <input type="text" id="eventDateTime" placeholder="December 15-17, 2025 | 9:00 AM - 6:00 PM" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventVenue">Venue</label>
+                    <input type="text" id="eventVenue" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventOrganizer">Organizer</label>
+                    <input type="text" id="eventOrganizer" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventRegistration">Registration Info</label>
+                    <input type="text" id="eventRegistration" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventDescription">Description</label>
+                    <textarea id="eventDescription" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="eventImage">Image URL</label>
+                    <input type="url" id="eventImage" placeholder="https://..." required>
+                </div>
+                <div class="form-group">
+                    <label for="eventHighlights">Highlights (one per line)</label>
+                    <textarea id="eventHighlights" rows="4" placeholder="Keynote Speakers&#10;Workshops&#10;Networking"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" id="cancelEventBtn">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
